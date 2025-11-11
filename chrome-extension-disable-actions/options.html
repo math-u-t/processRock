@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ページ操作コントローラー - 設定</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>🛡️ ページ操作コントローラー - 設定</h1>
+      <p class="subtitle">ウェブページ上の特定操作を無効化する拡張機能</p>
+    </header>
+
+    <!-- 法的・倫理的注意事項 -->
+    <section class="warning-section">
+      <h2>⚠️ 重要な注意事項</h2>
+      <div class="warning-box">
+        <h3>法的・倫理的利用について</h3>
+        <ul>
+          <li><strong>この拡張機能は、あなた自身のブラウジング体験を改善するためのものです。</strong></li>
+          <li>アクセシビリティの向上、不便なページ制限の回避などの正当な目的でのみ使用してください。</li>
+          <li>他者のウェブサイトのセキュリティ機能を回避したり、著作権を侵害する目的で使用しないでください。</li>
+          <li>ウェブサイトの利用規約を遵守してください。</li>
+          <li>この拡張機能の使用によって生じた問題について、開発者は一切の責任を負いません。</li>
+          <li><strong>悪意ある使用は絶対に行わないでください。</strong></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- グローバル設定 -->
+    <section class="settings-section">
+      <h2>🌐 グローバル設定</h2>
+      <div class="setting-item highlight">
+        <label class="switch-label">
+          <input type="checkbox" id="globalEnabled" class="toggle-switch">
+          <span class="slider"></span>
+          <span class="label-text">機能を有効化（OFF = すべての無効化機能をOFFにする）</span>
+        </label>
+        <p class="help-text">このスイッチをOFFにすると、すべての無効化機能が停止します。</p>
+      </div>
+    </section>
+
+    <!-- 無効化する操作の選択 -->
+    <section class="settings-section">
+      <h2>🚫 無効化する操作</h2>
+      <div class="settings-grid">
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="disableContextMenu">
+            <span>右クリックメニューを無効化</span>
+          </label>
+          <p class="help-text">ページ上で右クリックメニューを表示できなくします。</p>
+        </div>
+
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="disableTextSelection">
+            <span>テキスト選択を無効化</span>
+          </label>
+          <p class="help-text">マウスドラッグでのテキスト選択を禁止します。</p>
+        </div>
+
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="disableCopy">
+            <span>コピー操作を無効化</span>
+          </label>
+          <p class="help-text">Ctrl/Cmd+Cやコンテキストメニューのコピーを禁止します。</p>
+        </div>
+
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="disablePaste">
+            <span>ペースト操作を無効化</span>
+          </label>
+          <p class="help-text">Ctrl/Cmd+Vでのペーストを禁止します。</p>
+        </div>
+
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="disablePrint">
+            <span>印刷操作を無効化</span>
+          </label>
+          <p class="help-text">Ctrl/Cmd+Pでの印刷ダイアログを禁止します。</p>
+        </div>
+
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="disableDragDrop">
+            <span>ドラッグ&ドロップを無効化</span>
+          </label>
+          <p class="help-text">ファイルやテキストのドラッグ&ドロップを禁止します。</p>
+        </div>
+
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="disableFormSubmit">
+            <span>フォーム送信を無効化</span>
+          </label>
+          <p class="help-text">フォームの送信を禁止します（注意して使用）。</p>
+        </div>
+
+        <div class="setting-item">
+          <label class="checkbox-label">
+            <input type="checkbox" id="disableKeyboardShortcuts">
+            <span>特定のキーボードショートカットを無効化</span>
+          </label>
+          <p class="help-text">下記で設定したショートカットを禁止します。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ショートカット設定 -->
+    <section class="settings-section">
+      <h2>⌨️ ブロックするキーボードショートカット</h2>
+      <div class="shortcuts-list" id="shortcutsList">
+        <!-- JavaScriptで動的に生成 -->
+      </div>
+      <button id="addShortcutBtn" class="btn btn-secondary">＋ ショートカットを追加</button>
+    </section>
+
+    <!-- ホワイトリスト設定 -->
+    <section class="settings-section">
+      <h2>✅ ホワイトリスト（無効化を適用しないドメイン）</h2>
+      <p class="help-text">ここに登録されたドメインでは、すべての無効化機能が適用されません。</p>
+
+      <div class="whitelist-input-group">
+        <input type="text" id="whitelistDomain" placeholder="例: example.com" class="input-text">
+        <button id="addWhitelistBtn" class="btn btn-secondary">追加</button>
+      </div>
+
+      <div class="whitelist-list" id="whitelistList">
+        <!-- JavaScriptで動的に生成 -->
+      </div>
+    </section>
+
+    <!-- テスト機能 -->
+    <section class="settings-section">
+      <h2>🧪 動作テスト</h2>
+      <div class="test-area">
+        <p>この領域で設定をテストできます：</p>
+        <div class="test-box" id="testBox">
+          <p>このテキストを選択・コピーしてみてください。右クリックも試してください。</p>
+          <input type="text" placeholder="ここにペーストしてみてください" class="input-text">
+          <button class="btn btn-secondary">このボタンをドラッグしてみてください</button>
+        </div>
+        <p class="help-text">設定を保存後、ページをリロードしてテストしてください。</p>
+      </div>
+    </section>
+
+    <!-- 保存ボタン -->
+    <section class="actions-section">
+      <button id="saveBtn" class="btn btn-primary">💾 設定を保存</button>
+      <button id="resetBtn" class="btn btn-danger">🔄 デフォルトに戻す</button>
+      <div id="statusMessage" class="status-message"></div>
+    </section>
+
+    <!-- フッター -->
+    <footer>
+      <p>バージョン 1.0.0 | 個人利用・教育目的のみ | <a href="https://github.com" target="_blank">GitHub</a></p>
+    </footer>
+  </div>
+
+  <script src="js/options.js"></script>
+</body>
+</html>
